@@ -19,7 +19,6 @@
     <![endif]-->
 </head>
 <body>
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -44,7 +43,8 @@
                 <div class="form-group">
                     <asp:TextBox ID="PasswordInput" runat="server" CssClass="form-control" TextMode="Password" Text="Password"></asp:TextBox>
                 </div>
-                <asp:Button ID="SignIn" runat="server" Text="Sign in" CssClass="btn btn-success"/>
+                <asp:Button ID="SignIn" runat="server" Text="Sign in" CssClass="btn btn-success" OnClick="SignIn_Click"/>
+                <asp:Button ID="SignUp" runat="server" Text="Sign up" CssClass="btn btn-success" OnClick="SignUp_Click"/>
             </form>
         </div><!--/.navbar-collapse -->
       </div>
@@ -60,6 +60,8 @@
             <p>&copy; 2016 Team 2, Inc.</p>
         </footer>
     </div>
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

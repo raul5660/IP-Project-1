@@ -13,5 +13,15 @@ namespace Project1
         {
 
         }
+
+        protected void SignUp_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Signup.aspx");
+        }
+
+        protected void SignIn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
