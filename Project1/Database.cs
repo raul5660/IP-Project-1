@@ -33,10 +33,6 @@ namespace Project1
             finally
             {
                 db.Close();
-                if (tmp)
-                {
-                    Response.Redirect("Done.aspx");
-                }
             }
         }
         public static bool IsValidEmail(string strIn)
