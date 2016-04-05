@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -35,6 +36,84 @@ namespace Project1
                 db.Close();
             }
         }
+
+        public static int getUserID(String Username)
+        {
+            int UserID = -1;
+            SqlConnection db = new SqlConnection(SQLString);
+            SqlCommand command = new SqlCommand();
+            command.CommandType = System.Data.CommandType.Text;
+
+            command.CommandText = $"SELECT TOP 1 [User_ID] FROM [dbo].[User] WHERE [User_UserName] = '{Username}'";
+            command.Connection = db;
+
+            db.Open();
+
+            try
+            {
+                using (SqlDataReader rdr = command.ExecuteReader())
+                {
+                    if (rdr.HasRows)
+                    {
+                        while (rdr.Read())
+                        {
+                            IDataRecord record = ((IDataRecord)rdr);
+                            UserID = Convert.ToInt32(record[0]);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+            }
+            finally
+            {
+                db.Close();
+            }
+            return UserID;
+        }
+
+        public static bool SignIn(String Username, String Password)
+        {
+            Boolean validUser = false;
+
+            SqlConnection db = new SqlConnection(SQLString);
+            SqlCommand command = new SqlCommand();
+            command.CommandType = System.Data.CommandType.Text;
+
+            command.CommandText = $"SELECT [User_Username],[User_Password] FROM [dbo].[User] WHERE [User_UserName] = '{Username}' AND [User_Password] = '{Password}'";
+            command.Connection = db;
+
+            db.Open();
+
+            try
+            {
+                using (SqlDataReader rdr = command.ExecuteReader())
+                {
+                    if (rdr.HasRows)
+                    {
+                        validUser = true;
+                    }
+                }
+            }
+            catch
+            {
+            }
+            finally
+            {
+                db.Close();
+            }
+
+            return validUser;
+        }
+        public static HttpCookie CreateUserSession(String Username)
+        {
+            HttpCookie cookie = new HttpCookie("UserSession");
+            int User_ID = getUserID(Username);
+            
+            return cookie;
+        }
+
         public static bool IsValidEmail(string strIn)
         {
             invalid = false;

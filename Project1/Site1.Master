@@ -39,7 +39,7 @@
             </ul>
             <div class="navbar-form navbar-right">
                 <div class="form-group">
-                    <asp:TextBox ID="EmailSignIn" runat="server" CssClass="form-control" TextMode="SingleLine" Text="Username"></asp:TextBox>
+                    <asp:TextBox ID="UsernameSignIn" runat="server" CssClass="form-control" TextMode="SingleLine" Text="Username"></asp:TextBox>
                 </div>
                 <div class="form-group">
                     <asp:TextBox ID="PasswordSignIn" runat="server" CssClass="form-control" TextMode="Password" Text="Password"></asp:TextBox>

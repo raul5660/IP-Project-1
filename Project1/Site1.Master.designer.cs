@@ -22,13 +22,13 @@ namespace Project1 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// EmailSignIn control.
+        /// UsernameSignIn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EmailSignIn;
+        protected global::System.Web.UI.WebControls.TextBox UsernameSignIn;
         
         /// <summary>
         /// PasswordSignIn control.

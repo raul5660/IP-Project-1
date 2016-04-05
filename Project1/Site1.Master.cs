@@ -21,7 +21,14 @@ namespace Project1
 
         protected void SignIn_Click(object sender, EventArgs e)
         {
+            String Username = UsernameSignIn.Text;
+            String Password = PasswordSignIn.Text;
 
+            if (Database.SignIn(Username, Password))
+            {
+                Database.CreateUserSession(Username);
+                Response.Redirect("");
+            }
         }
     }
 }

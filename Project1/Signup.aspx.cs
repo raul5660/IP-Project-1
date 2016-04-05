@@ -16,12 +16,17 @@ namespace Project1
 
         protected void ButtonSignUp_Click(object sender, EventArgs e)
         {
-            Database.CreateUser(UserNameSignUp.Text,
-                PasswordSignUp.Text,
-                FirstNameSignup.Text,
-                LastNameSignUp.Text,
-                EmailSignUp.Text,
-                "user");
+            if (Database.IsValidEmail(EmailSignUp.Text) &&
+                ConfirmPasswordSignUp.Text == PasswordSignUp.Text)
+            {
+                Database.CreateUser(
+                    UserNameSignUp.Text,
+                    PasswordSignUp.Text,
+                    FirstNameSignup.Text,
+                    LastNameSignUp.Text,
+                    EmailSignUp.Text,
+                    "user");
+            }
         }
     }
 }
