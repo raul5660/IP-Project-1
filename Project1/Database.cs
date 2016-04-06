@@ -109,8 +109,28 @@ namespace Project1
         public static HttpCookie CreateUserSession(String Username)
         {
             HttpCookie cookie = new HttpCookie("UserSession");
-            int User_ID = getUserID(Username);
-            
+            int UserID = getUserID(Username);
+            SqlConnection db = new SqlConnection(SQLString);
+            SqlCommand command = new SqlCommand();
+            command.CommandType = System.Data.CommandType.Text;
+
+            command.CommandText = $"INSERT [dbo].[Session] (User_ID) VALUES ('{UserID}')";
+            command.Connection = db;
+
+            db.Open();
+
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                db.Close();
+            }
+            cookie.Expires = DateTime.Now.AddDays(1d);
             return cookie;
         }
 
