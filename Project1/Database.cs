@@ -72,7 +72,12 @@ namespace Project1
             }
             return UserID;
         }
+        public static String GetUserType(String UserID)
+        {
+            String tmp = null;
 
+            return tmp;
+        }
         public static bool SignIn(String Username, String Password)
         {
             Boolean validUser = false;
@@ -110,6 +115,7 @@ namespace Project1
         {
             HttpCookie cookie = new HttpCookie("UserSession");
             int UserID = getUserID(Username);
+            cookie.Value = UserID.ToString();
             SqlConnection db = new SqlConnection(SQLString);
             SqlCommand command = new SqlCommand();
             command.CommandType = System.Data.CommandType.Text;
@@ -130,8 +136,22 @@ namespace Project1
             {
                 db.Close();
             }
-            cookie.Expires = DateTime.Now.AddDays(1d);
+            cookie.Expires = DateTime.Now.AddDays(1);
             return cookie;
+        }
+
+        public static bool IsSessionValid(HttpCookieCollection cookies)
+        {
+            bool valid = false;
+            if (cookies.Get("UserSession") != null)
+            {
+                HttpCookie cookie = cookies.Get("UserSession");
+                if (cookie.Expires > DateTime.Now)
+                {
+                    valid = true;
+                }
+            }
+            return valid;
         }
 
         public static bool IsValidEmail(string strIn)

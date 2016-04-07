@@ -11,7 +11,22 @@ namespace Project1.GameBoard
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Database.IsSessionValid(Request.Cookies))
+            {
+                String type = Database.GetUserType(Request.Cookies.Get("UserSession").Value);
+                if (type == null)
+                {
+                    Response.Redirect("../Default.aspx");
+                }
+                else if (type.ToLower() == "admin")
+                {
+                    Response.Redirect("Admin.aspx");
+                }
+            }
+            else
+            {
+                Response.Redirect("../Default.aspx");
+            }
         }
     }
 }

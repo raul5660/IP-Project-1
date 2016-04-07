@@ -33,7 +33,7 @@ namespace Project1
                 // add cookie
                 Response.Cookies.Add(cookie);
                 // will redirect to appropriate page.
-                Response.Redirect("");
+                Response.Redirect(@"GameBoard\User.aspx");
             }
         }
     }
