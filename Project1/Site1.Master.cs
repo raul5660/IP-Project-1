@@ -35,6 +35,12 @@ namespace Project1
                 // will redirect to appropriate page.
                 Response.Redirect(@"GameBoard\User.aspx");
             }
+            // invalid account message
+            else
+            {
+                LblValUser.Text = "Invalid account";
+                LblValUser.Visible = true;
+            }
         }
     }
 }
