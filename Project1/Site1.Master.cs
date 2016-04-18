@@ -33,13 +33,13 @@ namespace Project1
                 // add cookie
                 Response.Cookies.Add(cookie);
                 // will redirect to appropriate page.
-                Response.Redirect(@"GameBoard\User.aspx");
+                Response.Redirect(@"GameBoard\User\User_Dashboard.aspx");
             }
             // invalid account message
             else
             {
-                LblValUser.Text = "Invalid account";
-                LblValUser.Visible = true;
+                //LblValUser.Text = "Invalid account";
+                //LblValUser.Visible = true;
             }
         }
     }

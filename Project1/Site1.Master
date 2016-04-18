@@ -41,18 +41,18 @@
                         <div class="form-group">
                             <asp:RequiredFieldValidator ID="RFVusername" runat="server" ErrorMessage="Username required"
                                 ControlToValidate="UsernameSignIn" ForeColor="Red"></asp:RequiredFieldValidator>
-                            <br />
+                            
                             <asp:TextBox ID="UsernameSignIn" runat="server" CssClass="form-control" TextMode="SingleLine" Placeholder="Username"></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <asp:RequiredFieldValidator ID="RFVpassword" runat="server" ErrorMessage="Password required"
                                 ControlToValidate="PasswordSignIn" ForeColor="Red"></asp:RequiredFieldValidator>
-                            <br />
+                            
                             <asp:TextBox ID="PasswordSignIn" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Password"></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <asp:Label ID="LblValUser" runat="server" Text="*" Visible="false" ForeColor="Red"></asp:Label>
-                            <br />
+                           
                             <asp:Button ID="SignIn" runat="server" Text="Sign in" CssClass="btn btn-success" OnClick="SignIn_Click" />
                             <asp:Button ID="SignUp" runat="server" Text="Sign up" CssClass="btn btn-success" OnClick="SignUp_Click" />
                         </div>

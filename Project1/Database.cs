@@ -36,7 +36,6 @@ namespace Project1
                 db.Close();
             }
         }
-
         public static int getUserID(String Username)
         {
             int UserID = -1;
@@ -74,9 +73,38 @@ namespace Project1
         }
         public static String GetUserType(String UserID)
         {
-            String tmp = null;
+            String Type = null;
+            SqlConnection db = new SqlConnection(SQLString);
+            SqlCommand command = new SqlCommand();
+            command.CommandType = System.Data.CommandType.Text;
 
-            return tmp;
+            command.CommandText = $"SELECT TOP 1 [User_AccountType] FROM [dbo].[User] WHERE [User_ID] = {UserID}";
+            command.Connection = db;
+
+            db.Open();
+
+            try
+            {
+                using (SqlDataReader rdr = command.ExecuteReader())
+                {
+                    if (rdr.HasRows)
+                    {
+                        while (rdr.Read())
+                        {
+                            IDataRecord record = ((IDataRecord)rdr);
+                            Type = record[0].ToString();
+                        }
+                    }
+                }
+            }
+            catch
+            {
+            }
+            finally
+            {
+                db.Close();
+            }
+            return Type;
         }
         public static bool SignIn(String Username, String Password)
         {
@@ -114,46 +142,19 @@ namespace Project1
         public static HttpCookie CreateUserSession(String Username)
         {
             HttpCookie cookie = new HttpCookie("UserSession");
-            int UserID = getUserID(Username);
-            cookie.Value = UserID.ToString();
-            SqlConnection db = new SqlConnection(SQLString);
-            SqlCommand command = new SqlCommand();
-            command.CommandType = System.Data.CommandType.Text;
-
-            command.CommandText = $"INSERT [dbo].[Session] (User_ID) VALUES ('{UserID}')";
-            command.Connection = db;
-
-            db.Open();
-
-            try
-            {
-                command.ExecuteNonQuery();
-            }
-            catch
-            {
-            }
-            finally
-            {
-                db.Close();
-            }
+            cookie["uid"] = getUserID(Username).ToString();
             cookie.Expires = DateTime.Now.AddDays(1);
             return cookie;
         }
-
-        public static bool IsSessionValid(HttpCookieCollection cookies)
+        public static bool IsSessionValid(HttpCookie Session)
         {
             bool valid = false;
-            if (cookies.Get("UserSession") != null)
+            if (Session != null)
             {
-                HttpCookie cookie = cookies.Get("UserSession");
-                if (cookie.Expires > DateTime.Now)
-                {
-                    valid = true;
-                }
+                valid = true;
             }
             return valid;
         }
-
         public static bool IsValidEmail(string strIn)
         {
             invalid = false;
