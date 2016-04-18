@@ -36,7 +36,6 @@ namespace Project1
                 db.Close();
             }
         }
-
         public static int getUserID(String Username)
         {
             int UserID = -1;
@@ -147,7 +146,6 @@ namespace Project1
             cookie.Expires = DateTime.Now.AddDays(1);
             return cookie;
         }
-
         public static bool IsSessionValid(HttpCookie Session)
         {
             bool valid = false;
@@ -157,7 +155,6 @@ namespace Project1
             }
             return valid;
         }
-
         public static bool IsValidEmail(string strIn)
         {
             invalid = false;
