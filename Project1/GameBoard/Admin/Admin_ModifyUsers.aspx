@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GameBoard/Site2.Master" AutoEventWireup="true" CodeBehind="Admin_ModifyUsers.aspx.cs" Inherits="Project1.GameBoard.WebForm1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="LeftNavBarContentPlaceHolder" runat="server">
-    <li class="active"><asp:LinkButton ID="Users" runat="server">Users</asp:LinkButton></li>
-    <li><asp:LinkButton ID="Games" runat="server">Games</asp:LinkButton></li>
-    <li><asp:LinkButton ID="Categories" runat="server">Categories</asp:LinkButton></li>
-    <li><asp:LinkButton ID="Challenges" runat="server">Challenges</asp:LinkButton></li>
+    <li class="active"><asp:LinkButton ID="Users" runat="server" OnClick="Users_Click">Users</asp:LinkButton></li>
+    <li><asp:LinkButton ID="Games" runat="server" OnClick="Games_Click">Games</asp:LinkButton></li>
+    <li><asp:LinkButton ID="Categories" runat="server" OnClick="Categories_Click">Categories</asp:LinkButton></li>
+    <li><asp:LinkButton ID="Challenges" runat="server" OnClick="Challenges_Click">Challenges</asp:LinkButton></li>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1 class="page-header">Users</h1>

@@ -7,12 +7,13 @@ using System.Web.UI.WebControls;
 
 namespace Project1.GameBoard
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class WebForm6 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
+
         protected void Users_Click(object sender, EventArgs e)
         {
             Response.Redirect("Admin_ModifyUsers.aspx");
