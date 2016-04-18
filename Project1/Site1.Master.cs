@@ -38,8 +38,8 @@ namespace Project1
             // invalid account message
             else
             {
-                LblValUser.Text = "Invalid account";
-                LblValUser.Visible = true;
+                //LblValUser.Text = "Invalid account";
+                //LblValUser.Visible = true;
             }
         }
     }

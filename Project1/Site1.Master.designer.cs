@@ -22,6 +22,15 @@ namespace Project1 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// RFVusername control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVusername;
+        
+        /// <summary>
         /// UsernameSignIn control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace Project1 {
         protected global::System.Web.UI.WebControls.TextBox UsernameSignIn;
         
         /// <summary>
+        /// RFVpassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVpassword;
+        
+        /// <summary>
         /// PasswordSignIn control.
         /// </summary>
         /// <remarks>
@@ -38,6 +56,15 @@ namespace Project1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox PasswordSignIn;
+        
+        /// <summary>
+        /// LblValUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblValUser;
         
         /// <summary>
         /// SignIn control.
