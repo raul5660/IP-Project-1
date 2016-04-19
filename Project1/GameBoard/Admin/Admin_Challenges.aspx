@@ -10,7 +10,6 @@
     <div class="table-responsive">
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Challenge_ID" DataSourceID="SqlDataSource1" CssClass="table table-striped">
             <Columns>
-                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                 <asp:BoundField DataField="Challenge_ID" HeaderText="Challenge_ID" InsertVisible="False" ReadOnly="True" SortExpression="Challenge_ID" />
                 <asp:BoundField DataField="Category_ID" HeaderText="Category_ID" SortExpression="Category_ID" />
                 <asp:BoundField DataField="Challenge_Name" HeaderText="Challenge_Name" SortExpression="Challenge_Name" />
@@ -20,7 +19,12 @@
                 <asp:BoundField DataField="Challenge_Question" HeaderText="Challenge_Question" SortExpression="Challenge_Question" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=WIN-BF1396ULF6F\SQLEXPRESS;Initial Catalog=CTF;Integrated Security=True" DeleteCommand="DELETE FROM [Challenge] WHERE [Challenge_ID] = @Challenge_ID" InsertCommand="INSERT INTO [Challenge] ([Category_ID], [Challenge_Name], [Challenge_Points], [Challenge_Answer], [Challenge_Solution], [Challenge_Question]) VALUES (@Category_ID, @Challenge_Name, @Challenge_Points, @Challenge_Answer, @Challenge_Solution, @Challenge_Question)" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Challenge]" UpdateCommand="UPDATE [Challenge] SET [Category_ID] = @Category_ID, [Challenge_Name] = @Challenge_Name, [Challenge_Points] = @Challenge_Points, [Challenge_Answer] = @Challenge_Answer, [Challenge_Solution] = @Challenge_Solution, [Challenge_Question] = @Challenge_Question WHERE [Challenge_ID] = @Challenge_ID">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server"
+            ConnectionString="<%$ ConnectionStrings:CTFConnectionString %>" 
+            DeleteCommand="DELETE FROM [Challenge] WHERE [Challenge_ID] = @Challenge_ID" 
+            InsertCommand="INSERT INTO [Challenge] ([Category_ID], [Challenge_Name], [Challenge_Points], [Challenge_Answer], [Challenge_Solution], [Challenge_Question]) VALUES (@Category_ID, @Challenge_Name, @Challenge_Points, @Challenge_Answer, @Challenge_Solution, @Challenge_Question)" 
+            SelectCommand="SELECT * FROM [Challenge]" 
+            UpdateCommand="UPDATE [Challenge] SET [Category_ID] = @Category_ID, [Challenge_Name] = @Challenge_Name, [Challenge_Points] = @Challenge_Points, [Challenge_Answer] = @Challenge_Answer, [Challenge_Solution] = @Challenge_Solution, [Challenge_Question] = @Challenge_Question WHERE [Challenge_ID] = @Challenge_ID">
             <DeleteParameters>
                 <asp:Parameter Name="Challenge_ID" Type="Int32" />
             </DeleteParameters>

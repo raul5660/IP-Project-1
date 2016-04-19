@@ -11,12 +11,15 @@
 
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Game_ID" DataSourceID="SqlDataSource1" CssClass="table table-striped">
             <Columns>
-                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                 <asp:BoundField DataField="Game_ID" HeaderText="Game_ID" InsertVisible="False" ReadOnly="True" SortExpression="Game_ID" />
                 <asp:BoundField DataField="Game_Name" HeaderText="Game_Name" SortExpression="Game_Name" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=WIN-BF1396ULF6F\SQLEXPRESS;Initial Catalog=CTF;Integrated Security=True" DeleteCommand="DELETE FROM [Game] WHERE [Game_ID] = @Game_ID" InsertCommand="INSERT INTO [Game] ([Game_Name]) VALUES (@Game_Name)" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Game]" UpdateCommand="UPDATE [Game] SET [Game_Name] = @Game_Name WHERE [Game_ID] = @Game_ID">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:CTFConnectionString %>"
+            DeleteCommand="DELETE FROM [Game] WHERE [Game_ID] = @Game_ID" 
+            InsertCommand="INSERT INTO [Game] ([Game_Name]) VALUES (@Game_Name)" SelectCommand="SELECT * FROM [Game]" 
+            UpdateCommand="UPDATE [Game] SET [Game_Name] = @Game_Name WHERE [Game_ID] = @Game_ID">
             <DeleteParameters>
                 <asp:Parameter Name="Game_ID" Type="Int32" />
             </DeleteParameters>

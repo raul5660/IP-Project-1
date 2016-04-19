@@ -6,16 +6,16 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Configuration;
 
 namespace Project1
 {
     public static class Database
     {
-        private static String SQLString = @"Data Source=WIN-BF1396ULF6F\SQLEXPRESS;Initial Catalog=CTF;Integrated Security=True";
         private static Boolean invalid;
-        public static void CreateUser(String Username,String Password, String FirstName, String LastName, String Email, String AccountType)
+        public static void CreateUser(String Username, String Password, String FirstName, String LastName, String Email, String AccountType)
         {
-            SqlConnection db = new SqlConnection(SQLString);
+            SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["CTFConnectionString"].ToString());
             SqlCommand command = new SqlCommand();
             command.CommandType = System.Data.CommandType.Text;
 
@@ -39,7 +39,7 @@ namespace Project1
         public static int getUserID(String Username)
         {
             int UserID = -1;
-            SqlConnection db = new SqlConnection(SQLString);
+            SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["CTFConnectionString"].ToString());
             SqlCommand command = new SqlCommand();
             command.CommandType = System.Data.CommandType.Text;
 
@@ -74,7 +74,7 @@ namespace Project1
         public static String GetUserType(String UserID)
         {
             String Type = null;
-            SqlConnection db = new SqlConnection(SQLString);
+            SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["CTFConnectionString"].ToString());
             SqlCommand command = new SqlCommand();
             command.CommandType = System.Data.CommandType.Text;
 
@@ -110,7 +110,7 @@ namespace Project1
         {
             Boolean validUser = false;
 
-            SqlConnection db = new SqlConnection(SQLString);
+            SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["CTFConnectionString"].ToString());
             SqlCommand command = new SqlCommand();
             command.CommandType = System.Data.CommandType.Text;
 
