@@ -10,13 +10,17 @@
     <div class="table-responsive">
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Category_ID" DataSourceID="SqlDataSource1" CssClass="table table-striped">
             <Columns>
-                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                 <asp:BoundField DataField="Category_ID" HeaderText="Category_ID" InsertVisible="False" ReadOnly="True" SortExpression="Category_ID" />
                 <asp:BoundField DataField="Game_ID" HeaderText="Game_ID" SortExpression="Game_ID" />
                 <asp:BoundField DataField="Category_Name" HeaderText="Category_Name" SortExpression="Category_Name" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=WIN-BF1396ULF6F\SQLEXPRESS;Initial Catalog=CTF;Integrated Security=True" DeleteCommand="DELETE FROM [Category] WHERE [Category_ID] = @Category_ID" InsertCommand="INSERT INTO [Category] ([Game_ID], [Category_Name]) VALUES (@Game_ID, @Category_Name)" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Category]" UpdateCommand="UPDATE [Category] SET [Game_ID] = @Game_ID, [Category_Name] = @Category_Name WHERE [Category_ID] = @Category_ID">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server"
+            DeleteCommand="DELETE FROM [Category] WHERE [Category_ID] = @Category_ID" 
+            InsertCommand="INSERT INTO [Category] ([Game_ID], [Category_Name]) VALUES (@Game_ID, @Category_Name)" 
+            SelectCommand="SELECT * FROM [Category]" 
+            UpdateCommand="UPDATE [Category] SET [Game_ID] = @Game_ID, [Category_Name] = @Category_Name WHERE [Category_ID] = @Category_ID" 
+            ConnectionString="<%$ ConnectionStrings:CTFConnectionString %>">
             <DeleteParameters>
                 <asp:Parameter Name="Category_ID" Type="Int32" />
             </DeleteParameters>
